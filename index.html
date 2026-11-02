@@ -1,0 +1,1569 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FUN RUN SMANSA MEPANGA 2026 - Official Registration Portal</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Poppins & Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,700&display=swap" rel="stylesheet">
+  <!-- QRCode.js library for E-Card Canvas QR code generation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            smansa: {
+              green: '#01796F',
+              darkgreen: '#015750',
+              lightgreen: '#E6F2F1',
+              orange: '#FF6B00',
+              lightorange: '#FFF2E8'
+            }
+          },
+          fontFamily: {
+            sans: ['Poppins', 'Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar & Animations */
+    html { scroll-behavior: smooth; }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+    }
+    .badge-pulse {
+      animation: pulse-slow 2s infinite;
+    }
+    @keyframes pulse-slow {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.85; transform: scale(1.02); }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col selection:bg-smansa-orange selection:text-white">
+
+  <!-- ================= TOP ANNOUNCEMENT BANNER (MOBILE FRIENDLY) ================= -->
+  <div class="bg-emerald-900 text-white px-3 py-1.5 text-[11px] sm:text-xs font-medium border-b border-emerald-800 flex items-center justify-between sm:justify-center space-x-2">
+    <span class="font-extrabold italic text-smansa-orange tracking-wide whitespace-nowrap">
+      AYO DAFTAR FUN RUN!
+    </span>
+    <span class="text-emerald-200 hidden sm:inline truncate">
+      Lari Bersama, Sehatkan Raga, Eratkan Kebersamaan
+    </span>
+  </div>
+
+  <!-- ================= HEADER SECTION ================= -->
+  <header class="sticky top-0 z-40 bg-white border-b border-emerald-100 shadow-md">
+    <div class="max-w-7xl mx-auto px-3 sm:px-4 py-2 sm:py-3 flex items-center justify-between gap-2">
+      
+      <!-- Center / Left Branding Header -->
+      <div class="flex items-center space-x-2.5 sm:space-x-4 flex-1 min-w-0">
+        <img src="https://i.ibb.co.com/HDbWtKKv/Picsart-26-10-21-11-13-07-208.png" 
+             alt="Logo SMANSA Mepanga" 
+             class="h-9 sm:h-12 md:h-14 w-auto object-contain flex-shrink-0 hover:scale-105 transition duration-300">
+        <div class="flex flex-col min-w-0">
+          <span class="text-[9px] sm:text-[10px] md:text-xs text-slate-500 tracking-wider uppercase font-semibold truncate">
+            SMA Negeri 1 Mepanga Present
+          </span>
+          <h1 class="text-xs sm:text-lg md:text-2xl font-black text-smansa-green tracking-tight uppercase leading-tight truncate">
+            SMANSA FUN RUN 7K 2026
+          </h1>
+          <div class="w-12 sm:w-16 h-0.5 sm:h-1 bg-smansa-orange rounded-full my-0.5"></div>
+          <span class="text-[8px] sm:text-[10px] md:text-xs font-semibold text-slate-500 italic truncate">
+            Run Together, Grow Together
+          </span>
+        </div>
+      </div>
+
+      <!-- Top Right 3-Dot Navigation Menu Button -->
+      <div class="flex-shrink-0">
+        <button id="menuBtn" onclick="toggleMenu()" class="p-2 sm:p-2.5 rounded-xl bg-slate-100 text-smansa-green hover:bg-emerald-50 transition border border-emerald-200 focus:outline-none focus:ring-2 focus:ring-smansa-orange active:scale-95" aria-label="Menu Panitia">
+          <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24">
+            <circle cx="12" cy="5" r="2" />
+            <circle cx="12" cy="12" r="2" />
+            <circle cx="12" cy="19" r="2" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= SLIDE-OVER NAVIGATION DRAWER ================= -->
+  <div id="navDrawer" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden transition-opacity duration-300 opacity-0">
+    <div id="drawerContent" class="fixed right-0 top-0 bottom-0 w-80 max-w-[85vw] bg-white shadow-2xl p-6 flex flex-col justify-between transform translate-x-full transition-transform duration-300 overflow-y-auto">
+      <div>
+        <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+          <div class="flex items-center space-x-2">
+            <img src="https://i.ibb.co.com/HDbWtKKv/Picsart-26-10-21-11-13-07-208.png" class="h-8 w-auto" alt="Logo">
+            <span class="font-bold text-smansa-green text-sm">FUN RUN 2026</span>
+          </div>
+          <button onclick="toggleMenu()" class="text-slate-400 hover:text-slate-700 p-1 rounded-lg">
+            ✕
+          </button>
+        </div>
+
+        <nav class="mt-6 space-y-2">
+          <a href="#informasi" onclick="toggleMenu()" class="flex items-center px-4 py-3 text-slate-700 hover:bg-emerald-50 hover:text-smansa-green rounded-xl font-medium transition text-sm">
+            <span class="mr-3">📋</span> Informasi Pendaftaran
+          </a>
+          <a href="#cek-status" onclick="toggleMenu()" class="flex items-center px-4 py-3 text-slate-700 hover:bg-emerald-50 hover:text-smansa-green rounded-xl font-medium transition text-sm">
+            <span class="mr-3">🔍</span> Cek Status Pendaftaran
+          </a>
+          <a href="#rute" onclick="toggleMenu()" class="flex items-center px-4 py-3 text-slate-700 hover:bg-emerald-50 hover:text-smansa-green rounded-xl font-medium transition text-sm">
+            <span class="mr-3">🗺️</span> Panduan & Rute
+          </a>
+          <a href="#syarat" onclick="toggleMenu()" class="flex items-center px-4 py-3 text-slate-700 hover:bg-emerald-50 hover:text-smansa-green rounded-xl font-medium transition text-sm">
+            <span class="mr-3">📜</span> Syarat & Ketentuan
+          </a>
+          <a href="#kontak" onclick="toggleMenu()" class="flex items-center px-4 py-3 text-slate-700 hover:bg-emerald-50 hover:text-smansa-green rounded-xl font-medium transition text-sm">
+            <span class="mr-3">📞</span> Kontak Panitia
+          </a>
+          <div class="pt-4 border-t border-slate-100">
+            <button onclick="openAdminModal()" class="w-full text-left flex items-center px-4 py-3 text-smansa-orange bg-orange-50 hover:bg-orange-100 rounded-xl font-semibold transition text-sm">
+              <span class="mr-3">🔐</span> Login Admin
+            </button>
+          </div>
+        </nav>
+      </div>
+
+      <div class="text-center text-xs text-slate-400 pt-6 border-t border-slate-100">
+        © 2026 SMAN 1 Mepanga.<br>All rights reserved.
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= HERO CAROUSEL SWIPER ================= -->
+  <section class="relative bg-slate-900 text-white overflow-hidden">
+    <div id="carouselContainer" class="relative w-full h-72 sm:h-80 md:h-[420px]">
+      
+      <!-- Slide 1: Main Event Hero Background -->
+      <div class="carousel-slide absolute inset-0 transition-opacity duration-700 opacity-100">
+        <img src="https://i.ibb.co.com/HDtkPR37/1792546880980.jpg" alt="Hero Fun Run" class="w-full h-full object-cover opacity-60">
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/40 to-transparent flex flex-col justify-end p-4 sm:p-6 md:p-12">
+          <span class="inline-block bg-smansa-orange text-white text-[10px] sm:text-xs font-bold px-2.5 py-1 rounded-full w-max mb-1.5 sm:mb-2">
+            EVENT UTAMA 2026
+          </span>
+          <h2 class="text-xl sm:text-3xl md:text-4xl font-extrabold text-white leading-tight">
+            FUN RUN SMANSA MEPANGA 7K
+          </h2>
+          <p class="text-[11px] sm:text-xs md:text-sm text-slate-200 mt-1 max-w-xl line-clamp-2 sm:line-clamp-none">
+            Registrasi Online Berakhir 19 November 2026. Siapkan langkah terbaikmu di ajang lari paling meriah tahun ini!
+          </p>
+        </div>
+      </div>
+
+      <!-- Slide 2: Route Preview Image -->
+      <div class="carousel-slide absolute inset-0 transition-opacity duration-700 opacity-0 pointer-events-none">
+        <img src="https://i.ibb.co.com/M5kSCn34/Picsart-26-11-01-11-29-05-421.png" alt="Peta Rute 7K" class="w-full h-full object-cover opacity-70">
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/30 to-transparent flex flex-col justify-end p-4 sm:p-6 md:p-12">
+          <span class="inline-block bg-smansa-green text-white text-[10px] sm:text-xs font-bold px-2.5 py-1 rounded-full w-max mb-1.5 sm:mb-2">
+            RUTE PERLOMBAAN 7KM
+          </span>
+          <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-white">
+            Lapangan Ogotion &rarr; SMAN 1 Mepanga
+          </h2>
+          <p class="text-[11px] sm:text-xs md:text-sm text-slate-200 mt-1">
+            Lintasan segar penuh pemandangan indah dan tempat hidrasi yang memadai.
+          </p>
+        </div>
+      </div>
+
+      <!-- Slide 3: Registration Info Banner -->
+      <div class="carousel-slide absolute inset-0 transition-opacity duration-700 opacity-0 pointer-events-none">
+        <div class="w-full h-full bg-gradient-to-r from-smansa-darkgreen to-slate-900 flex flex-col justify-center items-center text-center p-4 sm:p-6 md:p-12">
+          <div class="bg-white/10 backdrop-blur-md p-4 sm:p-6 rounded-2xl border border-white/20 max-w-lg w-full">
+            <span class="text-smansa-orange text-[10px] sm:text-xs font-extrabold tracking-wider uppercase mb-1 block">
+              Jadwal Pendaftaran
+            </span>
+            <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2">
+              Jalur Online & Offline Berkuota!
+            </h3>
+            <p class="text-[11px] sm:text-xs md:text-sm text-emerald-100">
+              Online: s/d 19 Nov 2026 (Free Jersey + Medali)<br>
+              Offline: 20 - 30 Nov 2026 (Tanpa Jersey)
+            </p>
+            <a href="#form-daftar" class="inline-block mt-3 sm:mt-4 bg-smansa-orange hover:bg-orange-600 text-white font-bold text-xs sm:text-sm px-5 sm:px-6 py-2 sm:py-2.5 rounded-full shadow-lg transition">
+              Daftar Sekarang
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Slide Indicators -->
+    <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
+      <button onclick="setSlide(0)" class="carousel-dot w-2.5 h-2.5 rounded-full bg-white opacity-100 transition" aria-label="Slide 1"></button>
+      <button onclick="setSlide(1)" class="carousel-dot w-2.5 h-2.5 rounded-full bg-white opacity-40 transition" aria-label="Slide 2"></button>
+      <button onclick="setSlide(2)" class="carousel-dot w-2.5 h-2.5 rounded-full bg-white opacity-40 transition" aria-label="Slide 3"></button>
+    </div>
+  </section>
+
+  <!-- ================= MARQUEE / QUOTE CAROUSEL BANNER (NO OVERLAP) ================= -->
+  <section class="bg-gradient-to-r from-smansa-orange via-orange-500 to-smansa-orange text-white py-3 sm:py-4 px-3 sm:px-4 shadow-lg border-y border-orange-400/30 relative z-30">
+    <div class="max-w-4xl mx-auto text-center flex items-center justify-center space-x-1.5 sm:space-x-3 overflow-hidden">
+      <span class="text-[9px] sm:text-xs font-black bg-white/20 backdrop-blur-sm px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full uppercase tracking-wider whitespace-nowrap shadow-sm flex-shrink-0">
+        🔥 RUN QUOTE
+      </span>
+      <p id="quoteDisplay" class="text-[11px] sm:text-sm md:text-base font-extrabold tracking-wide transition-all duration-500 transform translate-y-0 text-white drop-shadow truncate">
+        "RUN THE VIBE. OWN THE MOMENT"
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= QUICK INFO STATS CARDS ================= -->
+  <section class="max-w-7xl mx-auto px-3 sm:px-4 mt-4 sm:mt-6 z-20 relative">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-4">
+      <div class="bg-white p-3 sm:p-4 rounded-2xl shadow-lg border border-slate-100 flex flex-col items-center text-center hover:shadow-xl transition">
+        <span class="text-xl sm:text-2xl mb-0.5 sm:mb-1">📅</span>
+        <span class="text-[9px] sm:text-[10px] text-slate-400 font-bold uppercase">Batas Pendaftaran</span>
+        <span class="text-xs sm:text-sm font-extrabold text-smansa-green mt-0.5">19 Nov 2026</span>
+      </div>
+      <div class="bg-white p-3 sm:p-4 rounded-2xl shadow-lg border border-slate-100 flex flex-col items-center text-center hover:shadow-xl transition">
+        <span class="text-xl sm:text-2xl mb-0.5 sm:mb-1">🏃‍♂️</span>
+        <span class="text-[9px] sm:text-[10px] text-slate-400 font-bold uppercase">Jarak Tempuh</span>
+        <span class="text-xs sm:text-sm font-extrabold text-smansa-green mt-0.5">7 Kilometer</span>
+      </div>
+      <div class="bg-white p-3 sm:p-4 rounded-2xl shadow-lg border border-slate-100 flex flex-col items-center text-center hover:shadow-xl transition">
+        <span class="text-xl sm:text-2xl mb-0.5 sm:mb-1">📍</span>
+        <span class="text-[9px] sm:text-[10px] text-slate-400 font-bold uppercase">Start - Finish</span>
+        <span class="text-xs sm:text-sm font-extrabold text-smansa-green mt-0.5">Ogotion - SMANSA</span>
+      </div>
+      <div class="bg-white p-3 sm:p-4 rounded-2xl shadow-lg border border-slate-100 flex flex-col items-center text-center hover:shadow-xl transition">
+        <span class="text-xl sm:text-2xl mb-0.5 sm:mb-1">💳</span>
+        <span class="text-[9px] sm:text-[10px] text-slate-400 font-bold uppercase">Biaya Online</span>
+        <span class="text-xs sm:text-sm font-extrabold text-smansa-orange mt-0.5">Rp150.000</span>
+      </div>
+    </div>
+  </section>
+
+  <main class="max-w-7xl mx-auto px-4 py-10 space-y-12 flex-1">
+
+    <!-- ================= INFORMASI PENDAFTARAN & BENEFIT ================= -->
+    <section id="informasi" class="scroll-mt-24">
+      <div class="text-center max-w-2xl mx-auto mb-8">
+        <span class="text-xs font-bold text-smansa-orange uppercase tracking-wider bg-orange-50 px-3 py-1 rounded-full">
+          Detail Registrasi
+        </span>
+        <h2 class="text-2xl md:text-3xl font-black text-smansa-green mt-2">
+          Biaya, Jalur Pendaftaran & Benefit Peserta
+        </h2>
+        <p class="text-xs md:text-sm text-slate-500 mt-1">
+          Pilih jalur pendaftaran yang sesuai dan raih berbagai fasilitas eksklusif event SMANSA FUN RUN 2026.
+        </p>
+      </div>
+
+      <!-- Jalur Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- Jalur 1: Online -->
+        <div class="bg-white rounded-3xl p-6 shadow-xl border-2 border-emerald-500 relative flex flex-col justify-between hover:border-smansa-green transition">
+          <div class="absolute -top-3 right-6 bg-smansa-green text-white text-[11px] font-extrabold px-3 py-1 rounded-full uppercase">
+            Jalur Rekomendasi
+          </div>
+          <div>
+            <div class="flex items-center space-x-3 mb-4">
+              <span class="w-10 h-10 rounded-2xl bg-emerald-100 text-smansa-green flex items-center justify-center font-bold text-xl">🌐</span>
+              <div>
+                <h3 class="font-extrabold text-lg text-slate-800">1. Pendaftaran Jalur Online</h3>
+                <span class="text-xs text-emerald-600 font-semibold">Benefit Lengkap + Jersey Eksklusif</span>
+              </div>
+            </div>
+
+            <div class="space-y-2 mb-6 text-xs md:text-sm text-slate-600">
+              <div class="flex justify-between py-1 border-b border-slate-100">
+                <span>Periode Pendaftaran:</span>
+                <span class="font-bold text-slate-800">s/d 19 November 2026</span>
+              </div>
+              <div class="flex justify-between py-1 border-b border-slate-100">
+                <span>Biaya Pendaftaran:</span>
+                <span class="font-bold text-smansa-orange text-base">Rp150.000 / orang</span>
+              </div>
+            </div>
+
+            <h4 class="font-bold text-xs uppercase tracking-wider text-slate-400 mb-3">Fasilitas & Benefit Peserta:</h4>
+            <ul class="space-y-2.5 text-xs md:text-sm text-slate-700">
+              <li class="flex items-center"><span class="mr-2 text-emerald-500">👕</span> <strong>Jersey Eksklusif Acara</strong></li>
+              <li class="flex items-center"><span class="mr-2 text-emerald-500">🏃‍♂️</span> Nomor Dada (BIB) Resmi</li>
+              <li class="flex items-center"><span class="mr-2 text-emerald-500">🏅</span> Medali Finisher</li>
+              <li class="flex items-center"><span class="mr-2 text-emerald-500">📄</span> Sertifikat Peserta Digital</li>
+              <li class="flex items-center"><span class="mr-2 text-emerald-500">🎁</span> Kupon Doorprize Hadiah Menarik</li>
+            </ul>
+          </div>
+
+          <a href="#form-daftar" class="mt-6 w-full text-center bg-smansa-green hover:bg-smansa-darkgreen text-white font-bold py-3 rounded-2xl text-xs md:text-sm transition shadow-lg shadow-emerald-700/20">
+            Daftar Online Sekarang &rarr;
+          </a>
+        </div>
+
+        <!-- Jalur 2: Offline -->
+        <div class="bg-white rounded-3xl p-6 shadow-xl border border-slate-200 flex flex-col justify-between hover:border-slate-300 transition">
+          <div>
+            <div class="flex items-center space-x-3 mb-4">
+              <span class="w-10 h-10 rounded-2xl bg-orange-100 text-smansa-orange flex items-center justify-center font-bold text-xl">🏫</span>
+              <div>
+                <h3 class="font-extrabold text-lg text-slate-800">2. Pendaftaran Jalur Offline</h3>
+                <span class="text-xs text-orange-600 font-semibold">Tanpa Jersey Eksklusif</span>
+              </div>
+            </div>
+
+            <div class="space-y-2 mb-6 text-xs md:text-sm text-slate-600">
+              <div class="flex justify-between py-1 border-b border-slate-100">
+                <span>Periode Pendaftaran:</span>
+                <span class="font-bold text-slate-800">20 Nov s.d. 30 Nov 2026</span>
+              </div>
+              <div class="flex justify-between py-1 border-b border-slate-100">
+                <span>Lokasi Pendaftaran:</span>
+                <span class="font-bold text-slate-800">Sekretariat SMAN 1 Mepanga</span>
+              </div>
+              <div class="flex justify-between py-1 border-b border-slate-100">
+                <span>Biaya Pendaftaran:</span>
+                <span class="font-bold text-slate-800 text-base">Rp100.000 / orang</span>
+              </div>
+            </div>
+
+            <h4 class="font-bold text-xs uppercase tracking-wider text-slate-400 mb-3">Fasilitas & Benefit Peserta:</h4>
+            <ul class="space-y-2.5 text-xs md:text-sm text-slate-700">
+              <li class="flex items-center"><span class="mr-2 text-emerald-500">🏃‍♂️</span> Nomor Dada (BIB) Resmi</li>
+              <li class="flex items-center"><span class="mr-2 text-emerald-500">🏅</span> Medali Finisher</li>
+              <li class="flex items-center"><span class="mr-2 text-emerald-500">📄</span> Sertifikat Peserta Digital</li>
+              <li class="flex items-center"><span class="mr-2 text-slate-400">🎁</span> Kupon Doorprize Hadiah Menarik</li>
+              <li class="flex items-center text-red-500 font-semibold"><span class="mr-2">⚠️</span> (TIDAK Mendapatkan Jersey Eksklusif)</li>
+            </ul>
+          </div>
+
+          <div class="mt-6 bg-amber-50 border border-amber-200 p-3 rounded-xl text-[11px] text-amber-800 font-medium text-center">
+            *Pendaftaran Offline dibuka jika kuota utama masih tersedia di Sekretariat SMAN 1 Mepanga.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Pengambilan Atribut Notice Card -->
+      <div class="mt-6 bg-gradient-to-r from-emerald-900 to-smansa-green text-white p-5 rounded-2xl shadow-lg flex flex-col md:flex-row items-center justify-between">
+        <div class="flex items-center space-x-4 mb-3 md:mb-0">
+          <span class="text-3xl">🎽</span>
+          <div>
+            <h4 class="font-bold text-sm md:text-base">Pengambilan Atribut & Race Pack Peserta</h4>
+            <p class="text-xs text-emerald-100">
+              Pengambilan Jersey, BIB, dan stiker perlombaan dimulai tanggal <strong class="text-orange-300">15 Desember 2026</strong> di Sekretariat SMA Negeri 1 Mepanga.
+            </p>
+          </div>
+        </div>
+        <a href="#kontak" class="whitespace-nowrap bg-white text-smansa-green hover:bg-emerald-50 font-bold px-4 py-2 rounded-xl text-xs transition">
+          Tanya Panitia &rarr;
+        </a>
+      </div>
+
+    </section>
+
+    <!-- ================= FORM PENDAFTARAN ONLINE ================= -->
+    <section id="form-daftar" class="scroll-mt-24">
+      <div class="bg-white rounded-3xl shadow-2xl border border-slate-100 overflow-hidden">
+        <div class="bg-smansa-green text-white p-6 sm:p-8 relative">
+          <div class="absolute -right-10 -bottom-10 text-white/10 text-9xl font-black">7K</div>
+          <span class="bg-smansa-orange text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase">
+            Formulir Resmi
+          </span>
+          <h2 class="text-xl sm:text-3xl font-extrabold mt-2">Form Pendaftaran Peserta</h2>
+          <p class="text-xs sm:text-sm text-emerald-100 mt-1 max-w-lg">
+            Isi data diri dengan benar. Setelah mengirim formulir, lakukan transfer pembayaran dan konfirmasi ke WhatsApp panitia.
+          </p>
+        </div>
+
+        <!-- Status Closed Banner (Hidden by default, controlled by Admin toggle) -->
+        <div id="closedBanner" class="hidden bg-red-600 text-white p-4 text-center font-extrabold text-sm flex items-center justify-center space-x-2">
+          <span>⚠️</span>
+          <span>Pendaftaran Ditutup Sementara oleh Panitia</span>
+        </div>
+
+        <form id="regForm" onsubmit="handleRegistration(event)" class="p-6 sm:p-8 space-y-6">
+          
+          <!-- Input Fields -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
+                Nama Lengkap Peserta <span class="text-red-500">*</span>
+              </label>
+              <input type="text" id="inputNama" required placeholder="Sesuai KTP / Kartu Pelajar" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-smansa-green focus:ring-2 focus:ring-emerald-200 transition">
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
+                Nomor WhatsApp / Telp <span class="text-red-500">*</span>
+              </label>
+              <input type="tel" id="inputWA" required placeholder="Contoh: 082349705247" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-smansa-green focus:ring-2 focus:ring-emerald-200 transition">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
+              Ukuran Jersey (Jalur Online) <span class="text-red-500">*</span>
+            </label>
+            <select id="inputJersey" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-smansa-green focus:ring-2 focus:ring-emerald-200 transition">
+              <option value="" disabled selected>-- Pilih Ukuran Jersey --</option>
+              <option value="S">S (Small)</option>
+              <option value="M">M (Medium)</option>
+              <option value="L">L (Large)</option>
+              <option value="XL">XL (Extra Large)</option>
+              <option value="XXL">XXL (Double Extra Large)</option>
+            </select>
+          </div>
+
+          <!-- Payment Details Box with App Deep Links -->
+          <div class="bg-emerald-50/70 border border-emerald-200 rounded-2xl p-4 sm:p-5 space-y-4">
+            <div class="flex items-center justify-between flex-wrap gap-2">
+              <div>
+                <h4 class="font-extrabold text-xs sm:text-sm text-smansa-green">Informasi & Pilihan Pembayaran</h4>
+                <p class="text-[11px] sm:text-xs text-slate-600">Total Biaya: <strong class="text-smansa-orange font-extrabold text-xs sm:text-sm">Rp150.000</strong></p>
+              </div>
+              <span class="text-[11px] sm:text-xs bg-white text-smansa-green font-bold px-2.5 sm:px-3 py-1 rounded-full shadow-sm border border-emerald-100">
+                a.n. AHMAD FAHRIZAL
+              </span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 pt-1 sm:pt-2">
+              
+              <!-- BRI Card with Deep Link -->
+              <div onclick="handlePaymentDeepLink('BRI', '107601012125501', 'brimo://', 'https://play.google.com/store/apps/details?id=id.co.bri.brimo')" 
+                   class="bg-white p-3.5 sm:p-4 rounded-2xl border-2 border-slate-100 hover:border-emerald-500 cursor-pointer transition shadow-sm hover:shadow-md flex flex-row items-center justify-between gap-2 group active:scale-95">
+                <div class="flex items-center space-x-2.5 sm:space-x-3 min-w-0">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/5/59/BRI_2025.svg" alt="BRI" class="h-6 sm:h-8 w-auto object-contain flex-shrink-0">
+                  <div class="min-w-0">
+                    <span class="text-[9px] sm:text-[10px] text-slate-400 font-bold block truncate">BANK BRI (Salin & Buka App)</span>
+                    <span class="text-xs sm:text-sm font-black text-slate-800 tracking-wider truncate block">107601012125501</span>
+                  </div>
+                </div>
+                <div class="text-right flex-shrink-0">
+                  <span class="text-[11px] sm:text-xs bg-emerald-100 text-smansa-green group-hover:bg-smansa-green group-hover:text-white px-2.5 sm:px-3 py-1.5 rounded-xl font-bold transition inline-flex items-center space-x-1">
+                    <span>📲</span> <span>BRImo</span>
+                  </span>
+                </div>
+              </div>
+
+              <!-- DANA Card with Deep Link -->
+              <div onclick="handlePaymentDeepLink('DANA', '082349705247', 'dana://', 'https://link.dana.id/')" 
+                   class="bg-white p-3.5 sm:p-4 rounded-2xl border-2 border-slate-100 hover:border-blue-500 cursor-pointer transition shadow-sm hover:shadow-md flex flex-row items-center justify-between gap-2 group active:scale-95">
+                <div class="flex items-center space-x-2.5 sm:space-x-3 min-w-0">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Logo_dana_blue.svg" alt="DANA" class="h-5 sm:h-7 w-auto object-contain flex-shrink-0">
+                  <div class="min-w-0">
+                    <span class="text-[9px] sm:text-[10px] text-slate-400 font-bold block truncate">DANA (Salin & Buka App)</span>
+                    <span class="text-xs sm:text-sm font-black text-slate-800 tracking-wider truncate block">082349705247</span>
+                  </div>
+                </div>
+                <div class="text-right flex-shrink-0">
+                  <span class="text-[11px] sm:text-xs bg-blue-100 text-blue-700 group-hover:bg-blue-600 group-hover:text-white px-2.5 sm:px-3 py-1.5 rounded-xl font-bold transition inline-flex items-center space-x-1">
+                    <span>📲</span> <span>DANA</span>
+                  </span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <button id="btnSubmitForm" type="submit" class="w-full bg-smansa-orange hover:bg-orange-600 text-white font-black py-4 rounded-2xl text-sm sm:text-base transition shadow-xl shadow-orange-500/30 flex items-center justify-center space-x-2">
+            <span>Konfirmasi Pembayaran</span>
+            <span>&rarr;</span>
+          </button>
+
+        </form>
+      </div>
+    </section>
+
+    <!-- ================= CEK STATUS PENDAFTARAN ================= -->
+    <section id="cek-status" class="scroll-mt-24">
+      <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-100">
+        <div class="max-w-xl mx-auto text-center space-y-2 mb-6">
+          <span class="text-xs font-bold text-smansa-green uppercase tracking-wider bg-emerald-50 px-3 py-1 rounded-full">
+            Fitur Peserta
+          </span>
+          <h2 class="text-2xl font-black text-slate-800">Cek Status Pendaftaran</h2>
+          <p class="text-xs sm:text-sm text-slate-500">
+            Masukkan <strong>Kode Registrasi (SMANSA-XXXXXX)</strong> atau <strong>Nomor WhatsApp</strong> Anda untuk mengecek status verifikasi dan mengunduh Bukti Registrasi.
+          </p>
+        </div>
+
+        <div class="max-w-md mx-auto flex flex-col sm:flex-row gap-2">
+          <input type="text" id="searchQuery" placeholder="Contoh: SMANSA-829104 / 0823..." class="flex-1 bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm uppercase focus:outline-none focus:border-smansa-green focus:ring-2 focus:ring-emerald-200 transition">
+          <button onclick="searchParticipant()" class="bg-smansa-green hover:bg-smansa-darkgreen text-white font-bold px-6 py-3 rounded-xl text-sm transition shadow-md">
+            Cari Data
+          </button>
+        </div>
+
+        <!-- Search Result Box -->
+        <div id="searchResult" class="mt-6 hidden max-w-lg mx-auto"></div>
+      </div>
+    </section>
+
+    <!-- ================= PANDUAN & RUTE SECTION ================= -->
+    <section id="rute" class="scroll-mt-24 space-y-6">
+      <div class="text-center max-w-2xl mx-auto">
+        <span class="text-xs font-bold text-smansa-orange uppercase tracking-wider bg-orange-50 px-3 py-1 rounded-full">
+          Navigasi Perlombaan
+        </span>
+        <h2 class="text-2xl md:text-3xl font-black text-smansa-green mt-2">
+          Panduan, Rute 7KM & Shuttle Panitia
+        </h2>
+        <p class="text-xs md:text-sm text-slate-500 mt-1">
+          Pelajari jalur perlombaan dan tata cara fasilitas pengantaran kendaraan yang disediakan panitia.
+        </p>
+      </div>
+
+      <!-- Route Image Full crisp display -->
+      <div class="bg-white p-4 rounded-3xl shadow-xl border border-slate-100">
+        <img src="https://i.ibb.co.com/M5kSCn34/Picsart-26-11-01-11-29-05-421.png" alt="Peta Rute Fun Run SMANSA 7K" class="w-full h-auto rounded-2xl object-cover max-h-[500px]">
+      </div>
+
+      <!-- Shuttle Panitia Info Card -->
+      <div class="bg-emerald-900 text-white p-6 sm:p-8 rounded-3xl shadow-xl space-y-4">
+        <div class="flex items-center space-x-3">
+          <span class="text-3xl">🚌</span>
+          <h3 class="font-extrabold text-lg sm:text-xl text-emerald-200">
+            Fasilitas Pengantaran Peserta (Shuttle Panitia)
+          </h3>
+        </div>
+        <p class="text-xs sm:text-sm text-emerald-100 leading-relaxed">
+          Bagi peserta yang membawa kendaraan pribadi, panitia menyediakan fasilitas pengantaran (shuttle) <strong>GRATIS</strong> dari lokasi finish menuju titik start dengan ketentuan sebagai berikut:
+        </p>
+        <ol class="space-y-3 text-xs sm:text-sm text-emerald-100 list-decimal list-inside">
+          <li class="pl-1">Peserta disarankan memarkirkan kendaraan pribadinya langsung di area parkir garis finish, yaitu di <strong>halaman SMA Negeri 1 Mepanga</strong>, sebelum acara dimulai.</li>
+          <li class="pl-1">Panitia menyediakan armada mobil khusus untuk mengantar peserta dari SMA Negeri 1 Mepanga menuju ke titik start di <strong>Lapangan Ogotion</strong>.</li>
+          <li class="pl-1">Fasilitas pengantaran ini HANYA beroperasi sebelum perlombaan dimulai, yaitu pada <strong>pukul 05.00 - 06.00 WITA</strong>. Mohon hadir tepat waktu agar tidak tertinggal.</li>
+          <li class="pl-1">Harap menunjukkan nomor dada (BIB) atau bukti pendaftaran resmi kepada petugas sebelum memasuki mobil pengantaran.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ================= SYARAT & KETENTUAN ================= -->
+    <section id="syarat" class="scroll-mt-24">
+      <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-100 space-y-6">
+        <div class="border-b border-slate-100 pb-4">
+          <span class="text-xs font-bold text-smansa-green uppercase tracking-wider bg-emerald-50 px-3 py-1 rounded-full">
+            Regulasi Acara
+          </span>
+          <h2 class="text-2xl font-black text-slate-800 mt-2">Syarat, Ketentuan & Rules Technical</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs sm:text-sm text-slate-600">
+          <div class="space-y-3">
+            <h4 class="font-bold text-slate-800 text-base flex items-center">
+              <span class="mr-2 text-smansa-orange">🏃</span> Status Peserta & Batasan Atlet
+            </h4>
+            <ul class="space-y-2 list-disc list-inside">
+              <li><strong>Status Peserta:</strong> Acara ini ditujukan khusus untuk pelari non-profesional (Masyarakat Umum).</li>
+              <li><strong>Batasan Atlet:</strong> Atlet PON, Porprov, Pra-PON, Kejurnas, atau atlet profesional sejenisnya <strong>TIDAK diperkenankan</strong> mendaftar atau berpartisipasi dalam event ini.</li>
+              <li><strong>Sanksi Diskualifikasi:</strong> Jika di kemudian hari ditemukan bahwa pemenang/peserta merupakan atlet aktif dari ajang-ajang tersebut, panitia berhak melakukan diskualifikasi secara sepihak dan membatalkan seluruh hadiah.</li>
+            </ul>
+          </div>
+
+          <div class="space-y-3">
+            <h4 class="font-bold text-slate-800 text-base flex items-center">
+              <span class="mr-2 text-smansa-green">⏱️</span> Technical Fun Run
+            </h4>
+            <ul class="space-y-2 list-disc list-inside">
+              <li><strong>Open Gate:</strong> Pukul <strong>06.30 WITA</strong> di Lapangan Ogotion. Flag-off 07.00 WITA.</li>
+              <li><strong>Pemasangan BIB:</strong> Nomor Dada (BIB) wajib dipasang di dada bagian depan jersey peserta secara jelas selama perlombaan berlangsung.</li>
+              <li><strong>Water Station:</strong> Panitia menyediakan pos hidrasi air minum di beberapa titik rute perlombaan.</li>
+              <li><strong>Kesehatan Peserta:</strong> Peserta wajib memastikan kondisi fisik dalam keadaan sehat & fit sebelum mengikuti lari.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= KONTAK PANITIA ================= -->
+    <section id="kontak" class="scroll-mt-24">
+      <div class="bg-gradient-to-r from-smansa-green to-emerald-800 rounded-3xl p-6 sm:p-8 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="space-y-2 text-center md:text-left">
+          <span class="bg-white/20 text-xs font-bold px-3 py-1 rounded-full uppercase">Layanan Informasi</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold">Hubungi Contact Person Panitia</h2>
+          <p class="text-xs sm:text-sm text-emerald-100 max-w-md">
+            Mengalami kendala proses pendaftaran, konfirmasi pembayaran, atau unduh e-sertifikat? Tim panitia siap membantu Anda.
+          </p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+          <a href="https://wa.me/6283132811251" target="_blank" class="bg-white text-slate-800 hover:bg-emerald-50 px-4 py-3 rounded-2xl text-xs sm:text-sm font-bold flex items-center justify-center space-x-2 transition shadow-md">
+            <span>💬</span> <span>Fandi: 0831 3281 1251</span>
+          </a>
+          <a href="https://wa.me/628981525315" target="_blank" class="bg-white text-slate-800 hover:bg-emerald-50 px-4 py-3 rounded-2xl text-xs sm:text-sm font-bold flex items-center justify-center space-x-2 transition shadow-md">
+            <span>💬</span> <span>Rafka: 0898 1525 315</span>
+          </a>
+          <a href="https://wa.me/6285696569361" target="_blank" class="bg-white text-slate-800 hover:bg-emerald-50 px-4 py-3 rounded-2xl text-xs sm:text-sm font-bold flex items-center justify-center space-x-2 transition shadow-md">
+            <span>💬</span> <span>Abdi: 0856 9656 9361</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="bg-slate-900 text-slate-400 py-8 px-4 border-t border-slate-800 text-center text-xs">
+    <div class="max-w-7xl mx-auto space-y-3">
+      <div class="flex items-center justify-center space-x-2">
+        <img src="https://i.ibb.co.com/HDbWtKKv/Picsart-26-10-21-11-13-07-208.png" class="h-6 w-auto" alt="Logo">
+        <span class="font-bold text-white">SMA NEGERI 1 MEPANGA</span>
+      </div>
+      <p>FUN RUN SMANSA MEPANGA 7K 2026 - Run Together, Grow Together</p>
+      <p class="text-slate-500">Sekretariat: SMA Negeri 1 Mepanga, Kab. Parigi Moutong, Sulawesi Tengah.</p>
+    </div>
+  </footer>
+
+
+  <!-- ================= MODAL REGISTRATION SUCCESS ================= -->
+  <div id="modalSuccess" class="fixed inset-0 z-50 bg-slate-900/70 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl space-y-4 text-center transform scale-95 transition">
+      <div class="w-16 h-16 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center text-3xl mx-auto badge-pulse">
+        ⏳
+      </div>
+      <span class="inline-block bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full">
+        Menunggu Proses Verifikasi Panitia
+      </span>
+      <h3 class="text-xl font-black text-slate-800">Pendaftaran Berhasil Terkirim!</h3>
+      <p class="text-xs text-slate-500">
+        Simpan Kode Registrasi Anda di bawah ini untuk mengecek status verifikasi secara berkala.
+      </p>
+
+      <!-- Reg Code Display -->
+      <div class="bg-slate-100 p-4 rounded-2xl border border-slate-200 flex items-center justify-between">
+        <div>
+          <span class="text-[10px] text-slate-400 font-bold block">KODE REGISTRASI ANDA:</span>
+          <span id="modalRegCode" class="text-lg font-black text-smansa-green">SMANSA-XXXXXX</span>
+        </div>
+        <button onclick="copyRegCode()" class="bg-smansa-green text-white text-xs font-bold px-3 py-2 rounded-xl hover:bg-smansa-darkgreen transition">
+          Salin Kode
+        </button>
+      </div>
+
+      <div class="text-left text-xs text-slate-600 bg-emerald-50 p-3 rounded-xl border border-emerald-100 space-y-1">
+        <p class="font-bold text-smansa-green">Langkah Selanjutnya:</p>
+        <p>1. Lakukan transfer Rp150.000 ke rekening BRI / DANA panitia.</p>
+        <p>2. Klik tombol di bawah untuk mengirim bukti transfer ke WhatsApp Panitia.</p>
+      </div>
+
+      <div class="pt-2 space-y-2">
+        <a id="modalWaBtn" href="#" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 rounded-2xl text-xs sm:text-sm flex items-center justify-center space-x-2 transition shadow-lg">
+          <span>💬 Konfirmasi Pembayaran via WA</span>
+        </a>
+        <button onclick="closeModal('modalSuccess')" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-2.5 rounded-2xl text-xs transition">
+          Tutup Halaman Ini
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ================= MODAL ADMIN LOGIN ================= -->
+  <div id="modalAdminLogin" class="fixed inset-0 z-50 bg-slate-900/70 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl space-y-4">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <h3 class="font-black text-slate-800 text-base flex items-center">
+          <span class="mr-2">🔐</span> Login Panitia Admin
+        </h3>
+        <button onclick="closeModal('modalAdminLogin')" class="text-slate-400 hover:text-slate-700">✕</button>
+      </div>
+
+      <form onsubmit="handleAdminLogin(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Username</label>
+          <input type="text" id="adminUser" placeholder="" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-smansa-green transition">
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Password</label>
+          <input type="password" id="adminPass" placeholder="" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-smansa-green transition">
+        </div>
+        <button type="submit" class="w-full bg-smansa-green hover:bg-smansa-darkgreen text-white font-bold py-3 rounded-xl text-xs sm:text-sm transition shadow-md">
+          Masuk Dashboard
+        </button>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- ================= MODAL ADMIN DASHBOARD PANEL ================= -->
+  <div id="modalAdminDashboard" class="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-md hidden items-center justify-center p-2 sm:p-4 overflow-y-auto">
+    <div class="bg-white rounded-3xl max-w-5xl w-full p-4 sm:p-6 shadow-2xl my-8 space-y-6 max-h-[90vh] flex flex-col">
+      
+      <!-- Admin Header Controls -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-4">
+        <div>
+          <span class="bg-smansa-orange text-white text-[10px] font-extrabold px-2.5 py-0.5 rounded-full">ADMINISTRATOR</span>
+          <h3 class="text-xl font-black text-slate-800 mt-1">Dashboard Kelola & Verifikasi Pendaftar</h3>
+        </div>
+        
+        <div class="flex flex-wrap items-center gap-2">
+          <!-- Toggle Closed Status Button -->
+          <button id="toggleClosedBtn" onclick="toggleRegistrationClosed()" class="px-3 py-2 rounded-xl text-xs font-bold bg-amber-100 text-amber-800 hover:bg-amber-200 transition flex items-center space-x-1">
+            <span>🔒</span> <span id="closedToggleLabel">Tutup Pendaftaran</span>
+          </button>
+          
+          <!-- Export DOCS Button -->
+          <button onclick="exportToDocs()" class="px-3 py-2 rounded-xl text-xs font-bold bg-smansa-green text-white hover:bg-smansa-darkgreen transition flex items-center space-x-1 shadow-sm">
+            <span>📄</span> <span>Export DOCS (Ttd)</span>
+          </button>
+
+          <!-- Logout Button -->
+          <button onclick="logoutAdmin()" class="px-3 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
+            Keluar
+          </button>
+        </div>
+      </div>
+
+      <!-- Stats & Table Area -->
+      <div class="flex-1 overflow-y-auto space-y-4">
+        <div class="flex items-center justify-between text-xs text-slate-500">
+          <span>Total Pendaftar: <strong id="totalCount" class="text-smansa-green font-bold">0</strong> orang</span>
+          <span class="text-[11px] text-slate-400">*Gunakan tombol Verifikasi untuk menyetujui pendaftar.</span>
+        </div>
+
+        <!-- Google Sheets WebApp URL Input for Admin -->
+        <div class="bg-emerald-50 border border-emerald-200 p-3 rounded-xl flex flex-col sm:flex-row items-center justify-between gap-2 text-xs">
+          <div class="flex items-center space-x-2 w-full sm:w-auto">
+            <span class="text-base">📊</span>
+            <span class="font-bold text-smansa-green">Google Sheets Endpoint URL (ichalbarca197@gmail.com):</span>
+          </div>
+          <div class="flex items-center space-x-2 w-full sm:w-1/2">
+            <input type="url" id="sheetsUrlInput" placeholder="Paste URL Web App Google Apps Script di sini..." class="w-full bg-white border border-slate-300 rounded-lg px-3 py-1.5 text-xs focus:outline-none focus:border-smansa-green">
+            <button onclick="saveSheetsUrl()" class="bg-smansa-green hover:bg-smansa-darkgreen text-white font-bold px-3 py-1.5 rounded-lg text-xs whitespace-nowrap shadow-sm">
+              Simpan URL
+            </button>
+          </div>
+        </div>
+
+        <div class="overflow-x-auto border border-slate-200 rounded-2xl">
+          <table class="w-full min-w-[640px] text-left border-collapse text-xs">
+            <thead class="bg-slate-100 text-slate-700 uppercase font-bold text-[10px]">
+              <tr>
+                <th class="p-3">Waktu</th>
+                <th class="p-3">No. Reg</th>
+                <th class="p-3">Nama</th>
+                <th class="p-3">No. WA</th>
+                <th class="p-3">Jersey</th>
+                <th class="p-3">Status</th>
+                <th class="p-3 text-center">Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="adminTableBody" class="divide-y divide-slate-100">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="fixed top-5 right-5 z-50 flex flex-col space-y-2 pointer-events-none max-w-sm w-full px-4"></div>
+
+  <!-- Hidden Canvas for E-Card Generation -->
+  <canvas id="cardCanvas" width="800" height="450" class="hidden"></canvas>
+
+  <!-- ================= FIREBASE REALTIME SYNC ENGINE ================= -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { getFirestore, doc, setDoc, updateDoc, deleteDoc, onSnapshot, collection } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+    const appId = typeof __app_id !== 'undefined' ? __app_id : 'smansa-funrun-2026';
+    let db = null;
+    let auth = null;
+    let user = null;
+    let isFirebaseAvailable = false;
+
+    // Initialize Firebase if runtime config is provided
+    try {
+      if (typeof __firebase_config !== 'undefined') {
+        const firebaseConfig = JSON.parse(__firebase_config);
+        const app = initializeApp(firebaseConfig);
+        db = getFirestore(app);
+        auth = getAuth(app);
+        isFirebaseAvailable = true;
+      }
+    } catch (err) {
+      console.warn("Firebase initialization warning (using local fallback):", err);
+    }
+
+    // Authenticate user before Firestore operations
+    async function initAuth() {
+      if (!isFirebaseAvailable || !auth) return;
+      try {
+        if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+          const userCred = await signInWithCustomToken(auth, __initial_auth_token);
+          user = userCred.user;
+        } else {
+          const userCred = await signInAnonymously(auth);
+          user = userCred.user;
+        }
+      } catch (e) {
+        console.error("Auth initialization error:", e);
+      }
+    }
+
+    // Setup Real-time Listeners across devices
+    async function setupRealtimeSync() {
+      await initAuth();
+      if (!isFirebaseAvailable || !db || !user) {
+        if (typeof renderAdminTable === 'function') renderAdminTable();
+        if (typeof applyConfigUI === 'function') applyConfigUI();
+        return;
+      }
+
+      // 1. Real-time sync for Participants list (Strict Path Rule)
+      const participantsCol = collection(db, 'artifacts', appId, 'public', 'data', 'participants');
+      onSnapshot(participantsCol, (snapshot) => {
+        const list = [];
+        snapshot.forEach(docSnap => {
+          list.push(docSnap.data());
+        });
+        // Sort in memory by date descending
+        list.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+        window.remoteParticipantsList = list;
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+        if (typeof renderAdminTable === 'function') renderAdminTable();
+      }, (error) => {
+        console.error("Participants snapshot sync error:", error);
+      });
+
+      // 2. Real-time sync for System Config (Close Registration Toggle)
+      const configDoc = doc(db, 'artifacts', appId, 'public', 'data', 'config', 'settings');
+      onSnapshot(configDoc, (docSnap) => {
+        if (docSnap.exists()) {
+          const cfg = docSnap.data();
+          window.remoteConfig = cfg;
+          localStorage.setItem(CONFIG_KEY, JSON.stringify(cfg));
+          if (typeof applyConfigUI === 'function') applyConfigUI();
+        }
+      }, (error) => {
+        console.error("Config snapshot sync error:", error);
+      });
+    }
+
+    // Expose database methods to global window context
+    window.dbAddParticipant = async function(participant) {
+      if (isFirebaseAvailable && db && user) {
+        try {
+          const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'participants', participant.id);
+          await setDoc(docRef, participant);
+          return true;
+        } catch (err) {
+          console.error("Firestore add error:", err);
+        }
+      }
+      return false;
+    };
+
+    window.dbUpdateParticipant = async function(id, updates) {
+      if (isFirebaseAvailable && db && user) {
+        try {
+          const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'participants', id);
+          await updateDoc(docRef, updates);
+          return true;
+        } catch (err) {
+          console.error("Firestore update error:", err);
+        }
+      }
+      return false;
+    };
+
+    window.dbDeleteParticipant = async function(id) {
+      if (isFirebaseAvailable && db && user) {
+        try {
+          const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'participants', id);
+          await deleteDoc(docRef);
+          return true;
+        } catch (err) {
+          console.error("Firestore delete error:", err);
+        }
+      }
+      return false;
+    };
+
+    window.dbSaveConfig = async function(cfg) {
+      if (isFirebaseAvailable && db && user) {
+        try {
+          const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'config', 'settings');
+          await setDoc(docRef, cfg, { merge: true });
+          return true;
+        } catch (err) {
+          console.error("Firestore config save error:", err);
+        }
+      }
+      return false;
+    };
+
+    window.addEventListener('DOMContentLoaded', setupRealtimeSync);
+  </script>
+
+  <!-- ================= JAVASCRIPT LOGIC ================= -->
+  <script>
+    /* ---------- TOAST NOTIFICATION SYSTEM ---------- */
+    function showToast(message, type = 'success') {
+      const container = document.getElementById('toastContainer');
+      const toast = document.createElement('div');
+      toast.className = `pointer-events-auto bg-slate-900 text-white p-4 rounded-2xl shadow-2xl border ${type === 'success' ? 'border-emerald-500' : 'border-amber-500'} flex items-center space-x-3 transform translate-y-[-20px] opacity-0 transition-all duration-300`;
+      
+      toast.innerHTML = `
+        <span class="text-xl">${type === 'success' ? '✅' : 'ℹ️'}</span>
+        <div class="text-xs font-semibold text-slate-100 leading-snug">${message}</div>
+      `;
+
+      container.appendChild(toast);
+
+      setTimeout(() => {
+        toast.classList.remove('translate-y-[-20px]', 'opacity-0');
+      }, 10);
+
+      setTimeout(() => {
+        toast.classList.add('translate-y-[-20px]', 'opacity-0');
+        setTimeout(() => toast.remove(), 300);
+      }, 4000);
+    }
+
+    /* ---------- PAYMENT DEEP LINK & COPY ---------- */
+    function handlePaymentDeepLink(provider, number, appScheme, fallbackUrl) {
+      // 1. Copy account/wallet number to clipboard
+      const tempInput = document.createElement('textarea');
+      tempInput.value = number;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempInput);
+
+      // 2. Display custom toast notification
+      showToast(`Nomor ${provider} (${number}) a.n. AHMAD FAHRIZAL berhasil disalin! Membuka aplikasi ${provider}...`, 'success');
+
+      // 3. Attempt Deep Linking to Mobile Application
+      setTimeout(() => {
+        window.location.href = appScheme;
+        
+        // Fallback open app link/store if deep link scheme isn't opened
+        setTimeout(() => {
+          window.open(fallbackUrl, '_blank');
+        }, 1500);
+      }, 500);
+    }
+
+    /* ---------- GLOBAL STATE & STORAGE INIT ---------- */
+    const STORAGE_KEY = 'smansa_funrun_registrations_2026';
+    const CONFIG_KEY = 'smansa_funrun_config_2026';
+    const SHEETS_URL_KEY = 'smansa_funrun_sheets_url_2026';
+    
+    // Permanent Google Apps Script Web App URL for Google Sheets Sync
+    const PERMANENT_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbzMET4MdMcutKbMSg2LwVoHcHhaKd1kRRQ6fWx7rS23vkAnGkuHRcjAqV1HuNTyZhwa/exec';
+
+    function getSheetsUrl() {
+      return localStorage.getItem(SHEETS_URL_KEY) || PERMANENT_SHEETS_URL;
+    }
+
+    function saveSheetsUrl() {
+      const url = document.getElementById('sheetsUrlInput').value.trim();
+      localStorage.setItem(SHEETS_URL_KEY, url || PERMANENT_SHEETS_URL);
+      showToast('URL Google Sheets berhasil disimpan!', 'success');
+      syncFromGoogleSheets();
+    }
+
+    /* ---------- GOOGLE SHEETS SYNC ENGINE ---------- */
+    async function syncToGoogleSheets(payload) {
+      const sheetsUrl = getSheetsUrl();
+      if (!sheetsUrl) return;
+
+      try {
+        await fetch(sheetsUrl, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+      } catch (err) {
+        console.warn('Gagal mengirim data ke Google Sheets:', err);
+      }
+    }
+
+    async function syncFromGoogleSheets() {
+      const sheetsUrl = getSheetsUrl();
+      if (!sheetsUrl) return;
+
+      try {
+        const response = await fetch(sheetsUrl);
+        if (!response.ok) return;
+        const remoteData = await response.json();
+        
+        if (Array.isArray(remoteData) && remoteData.length > 0) {
+          saveLocalData(remoteData);
+          if (typeof renderAdminTable === 'function') renderAdminTable();
+        }
+      } catch (err) {
+        // Silent catch for auto-sync polling
+      }
+    }
+
+    // Auto-sync from Google Sheets every 7 seconds
+    setInterval(syncFromGoogleSheets, 7000);
+
+    // Mock initial data if empty
+    const defaultData = [
+      {
+        id: 'SMANSA-882194',
+        name: 'Test',
+        phone: '082349705247',
+        jersey: 'L',
+        status: 'Terverifikasi',
+        date: '2026-11-01 10:15'
+      },
+      {
+        id: 'SMANSA-719302',
+        name: 'Test 2',
+        phone: '085241098271',
+        jersey: 'M',
+        status: 'Menunggu Verifikasi',
+        date: '2026-11-02 14:20'
+      }
+    ];
+
+    function getLocalData() {
+      if (window.remoteParticipantsList && Array.isArray(window.remoteParticipantsList)) {
+        return window.remoteParticipantsList;
+      }
+      const data = localStorage.getItem(STORAGE_KEY);
+      return data ? JSON.parse(data) : defaultData;
+    }
+
+    function saveLocalData(arr) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
+      renderAdminTable();
+    }
+
+    function getConfig() {
+      if (window.remoteConfig) {
+        return window.remoteConfig;
+      }
+      const cfg = localStorage.getItem(CONFIG_KEY);
+      return cfg ? JSON.parse(cfg) : { isClosed: false };
+    }
+
+    function saveConfig(cfg) {
+      localStorage.setItem(CONFIG_KEY, JSON.stringify(cfg));
+      applyConfigUI();
+    }
+
+    /* ---------- NAVIGATION DRAWER ---------- */
+    function toggleMenu() {
+      const drawer = document.getElementById('navDrawer');
+      const content = document.getElementById('drawerContent');
+      if (drawer.classList.contains('hidden')) {
+        drawer.classList.remove('hidden');
+        setTimeout(() => {
+          drawer.classList.remove('opacity-0');
+          content.classList.remove('translate-x-full');
+        }, 10);
+      } else {
+        drawer.classList.add('opacity-0');
+        content.classList.add('translate-x-full');
+        setTimeout(() => {
+          drawer.classList.add('hidden');
+        }, 300);
+      }
+    }
+
+    /* ---------- HERO CAROUSEL SWIPER ---------- */
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.carousel-dot');
+
+    function setSlide(index) {
+      currentSlide = index;
+      slides.forEach((slide, i) => {
+        if (i === index) {
+          slide.classList.remove('opacity-0', 'pointer-events-none');
+          slide.classList.add('opacity-100');
+          dots[i].classList.replace('opacity-40', 'opacity-100');
+        } else {
+          slide.classList.remove('opacity-100');
+          slide.classList.add('opacity-0', 'pointer-events-none');
+          dots[i].classList.replace('opacity-100', 'opacity-40');
+        }
+      });
+    }
+
+    setInterval(() => {
+      currentSlide = (currentSlide + 1) % slides.length;
+      setSlide(currentSlide);
+    }, 4000);
+
+    /* ---------- QUOTE MARQUEE BANNER ROTATOR ---------- */
+    const quotes = [
+      "RUN THE VIBE. OWN THE MOMENT",
+      "BUKAN CUMA LARI, INI SOAL MEMORI!",
+      "BEDA LANGKAH, SATU ARAH!",
+      "SAATNYA BERGERAK, SAATNYA BERDAMPAK!",
+      "CHASE THE SUN. FEEL ALIVE.",
+      "KURANGIN SCROLLING, TAMBAHIN RUNNING!",
+      "LET'S RUN, LET'S UNITE",
+      "P,,, INFO RUNNING",
+      "PACU LANGKAHMU, NYALAKAN SEMANGATMU!",
+      "SAYA AKAN LAWAN... RASA MALAS"
+    ];
+    let quoteIndex = 0;
+    setInterval(() => {
+      quoteIndex = (quoteIndex + 1) % quotes.length;
+      const el = document.getElementById('quoteDisplay');
+      el.classList.add('opacity-0', '-translate-y-2');
+      setTimeout(() => {
+        el.textContent = `"${quotes[quoteIndex]}"`;
+        el.classList.remove('opacity-0', '-translate-y-2');
+      }, 400);
+    }, 3500);
+
+    /* ---------- COPY TO CLIPBOARD HELPER ---------- */
+    function copyText(text, label) {
+      const input = document.createElement('textarea');
+      input.value = text;
+      document.body.appendChild(input);
+      input.select();
+      document.execCommand('copy');
+      document.body.removeChild(input);
+      alert(`${label} (${text}) berhasil disalin!`);
+    }
+
+    function copyRegCode() {
+      const code = document.getElementById('modalRegCode').textContent;
+      copyText(code, 'Kode Registrasi');
+    }
+
+    /* ---------- FORM PENDAFTARAN SUBMIT ---------- */
+    function handleRegistration(e) {
+      e.preventDefault();
+      
+      const config = getConfig();
+      if (config.isClosed) {
+        alert('Maaf, pendaftaran sedang ditutup sementara oleh panitia.');
+        return;
+      }
+
+      const nama = document.getElementById('inputNama').value.trim();
+      const wa = document.getElementById('inputWA').value.trim();
+      const jersey = document.getElementById('inputJersey').value;
+
+      if (!nama || !wa || !jersey) {
+        alert('Mohon lengkapi semua kolom pendaftaran.');
+        return;
+      }
+
+      // Generate Random SMANSA-XXXXXX Code
+      const randHex = Math.floor(100000 + Math.random() * 900000);
+      const regId = `SMANSA-${randHex}`;
+      const dateStr = new Date().toISOString().replace('T', ' ').substring(0, 16);
+
+      const newParticipant = {
+        id: regId,
+        name: nama,
+        phone: wa,
+        jersey: jersey,
+        status: 'Menunggu Verifikasi',
+        date: dateStr
+      };
+
+      const list = getLocalData();
+      list.unshift(newParticipant);
+      saveLocalData(list);
+
+      // Sync to cloud database & Google Sheets
+      if (typeof window.dbAddParticipant === 'function') {
+        window.dbAddParticipant(newParticipant);
+      }
+      syncToGoogleSheets({ action: 'ADD', ...newParticipant });
+
+      // Open Success Modal
+      document.getElementById('modalRegCode').textContent = regId;
+      const waMsg = encodeURIComponent(`Halo Panitia SMANSA FUN RUN 2026,\nSaya sudah mendaftar dan siap melakukan pembayaran.\n\nKode Registrasi: ${regId}\nNama: ${nama}\nUkuran Jersey: ${jersey}\n\nMohon diverifikasi.`);
+      document.getElementById('modalWaBtn').href = `https://wa.me/6282349705247?text=${waMsg}`;
+      
+      document.getElementById('regForm').reset();
+      openModal('modalSuccess');
+    }
+
+    /* ---------- SEARCH STATUS PENDAFTARAN ---------- */
+    function searchParticipant() {
+      const q = document.getElementById('searchQuery').value.trim().toLowerCase();
+      const resContainer = document.getElementById('searchResult');
+      resContainer.classList.remove('hidden');
+
+      if (!q) {
+        resContainer.innerHTML = `<div class="p-4 bg-red-50 text-red-600 rounded-2xl text-xs text-center font-bold">Silakan masukkan Kode Registrasi atau Nomor WhatsApp.</div>`;
+        return;
+      }
+
+      const list = getLocalData();
+      const found = list.find(item => item.id.toLowerCase() === q || item.phone.toLowerCase() === q);
+
+      if (!found) {
+        resContainer.innerHTML = `<div class="p-4 bg-amber-50 text-amber-800 rounded-2xl text-xs text-center font-bold">Data pendaftaran tidak ditemukan. Pastikan kode registrasi atau nomor WA sesuai.</div>`;
+        return;
+      }
+
+      const isVerified = found.status === 'Terverifikasi';
+      const badgeClass = isVerified ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800';
+
+      resContainer.innerHTML = `
+        <div class="bg-white border-2 border-slate-200 p-5 rounded-2xl space-y-3 shadow-md text-left">
+          <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+            <span class="text-[10px] font-bold uppercase text-slate-400">Kode Registrasi</span>
+            <span class="text-xs font-bold ${badgeClass} px-2.5 py-0.5 rounded-full">${found.status}</span>
+          </div>
+          <div class="text-sm">
+            <h4 class="font-extrabold text-slate-800 text-base">${found.name}</h4>
+            <p class="text-xs text-slate-500">Kode: <strong class="text-smansa-green">${found.id}</strong> | Jersey: <strong>${found.jersey}</strong></p>
+            <p class="text-xs text-slate-400 mt-0.5">No. WA: ${found.phone}</p>
+          </div>
+
+          ${isVerified ? `
+            <div class="pt-2">
+              <button onclick="downloadProofCard('${found.id}', '${found.name}', '${found.jersey}')" class="w-full bg-smansa-green hover:bg-smansa-darkgreen text-white font-bold py-2.5 rounded-xl text-xs transition flex items-center justify-center space-x-2 shadow-md">
+                <span>📥 Download Bukti Pendaftaran (JPG)</span>
+              </button>
+            </div>
+          ` : `
+            <div class="text-[11px] text-amber-700 bg-amber-50 p-2.5 rounded-xl border border-amber-200">
+              ⏳ Pembayaran Anda sedang dalam antrean verifikasi panitia. Silakan kirimkan bukti transfer ke WhatsApp Panitia (082349705247).
+            </div>
+          `}
+        </div>
+      `;
+    }
+
+    /* ---------- GENERATE & DOWNLOAD E-CARD (JPG) VIA CANVAS ---------- */
+    function downloadProofCard(id, name, jersey) {
+      const canvas = document.getElementById('cardCanvas');
+      const ctx = canvas.getContext('2d');
+
+      // Background Gradient
+      const grad = ctx.createLinearGradient(0, 0, 800, 450);
+      grad.addColorStop(0, '#01796F');
+      grad.addColorStop(1, '#013D38');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, 800, 450);
+
+      // Decorative Accent Line
+      ctx.fillStyle = '#FF6B00';
+      ctx.fillRect(0, 0, 800, 12);
+      ctx.fillRect(0, 438, 800, 12);
+
+      // Header Text
+      ctx.fillStyle = '#FFFFFF';
+      ctx.font = 'bold 22px Poppins, sans-serif';
+      ctx.fillText('FUN RUN SMANSA MEPANGA 7K 2026', 40, 60);
+
+      ctx.fillStyle = '#FF6B00';
+      ctx.font = 'bold 14px Poppins, sans-serif';
+      ctx.fillText('KARTU BUKTI PENDAFTARAN RESMI PESERTA', 40, 85);
+
+      // White Card Box inside Canvas
+      ctx.fillStyle = '#FFFFFF';
+      ctx.roundRect(40, 110, 720, 290, 16);
+      ctx.fill();
+
+      // Card Content Details
+      ctx.fillStyle = '#334155';
+      ctx.font = '12px Poppins, sans-serif';
+      ctx.fillText('NAMA LENGKAP PESERTA', 70, 150);
+
+      ctx.fillStyle = '#01796F';
+      ctx.font = 'bold 24px Poppins, sans-serif';
+      ctx.fillText(name.toUpperCase(), 70, 180);
+
+      ctx.fillStyle = '#334155';
+      ctx.font = '12px Poppins, sans-serif';
+      ctx.fillText('KODE REGISTRASI', 70, 220);
+
+      ctx.fillStyle = '#FF6B00';
+      ctx.font = 'bold 22px Poppins, sans-serif';
+      ctx.fillText(id, 70, 248);
+
+      ctx.fillStyle = '#334155';
+      ctx.font = '12px Poppins, sans-serif';
+      ctx.fillText('UKURAN JERSEY', 70, 290);
+      ctx.fillStyle = '#0f172a';
+      ctx.font = 'bold 18px Poppins, sans-serif';
+      ctx.fillText(jersey, 70, 315);
+
+      ctx.fillStyle = '#334155';
+      ctx.font = '12px Poppins, sans-serif';
+      ctx.fillText('STATUS PERLOMBAAN', 280, 290);
+      ctx.fillStyle = '#059669';
+      ctx.font = 'bold 18px Poppins, sans-serif';
+      ctx.fillText('TERVERIFIKASI', 280, 315);
+
+      // Event Info Footer Box on Card
+      ctx.fillStyle = '#F8FAFC';
+      ctx.fillRect(70, 340, 660, 45);
+      ctx.fillStyle = '#475569';
+      ctx.font = '11px Poppins, sans-serif';
+      ctx.fillText('Tunjukkan kartu digital ini saat pengambilan atribut di Sekretariat SMAN 1 Mepanga (15 Des 2026).', 85, 368);
+
+      // Generate Image Download
+      const link = document.createElement('a');
+      link.download = `BUKTI_PENDAFTARAN_${id}.jpg`;
+      link.href = canvas.toDataURL('image/jpeg', 0.95);
+      link.click();
+    }
+
+    /* ---------- ADMIN AUTH & MANAGEMENT ---------- */
+    function openAdminModal() {
+      toggleMenu();
+      openModal('modalAdminLogin');
+    }
+
+    function handleAdminLogin(e) {
+      e.preventDefault();
+      const u = document.getElementById('adminUser').value;
+      const p = document.getElementById('adminPass').value;
+
+      if (u === 'jokowee' && p === 'ndasana22') {
+        closeModal('modalAdminLogin');
+        openModal('modalAdminDashboard');
+        renderAdminTable();
+        document.getElementById('adminUser').value = '';
+        document.getElementById('adminPass').value = '';
+      } else {
+        alert('Username atau Password Panitia Salah!');
+      }
+    }
+
+    function logoutAdmin() {
+      closeModal('modalAdminDashboard');
+    }
+
+    function renderAdminTable() {
+      const list = getLocalData();
+      const tbody = document.getElementById('adminTableBody');
+      document.getElementById('totalCount').textContent = list.length;
+
+      if (list.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="7" class="p-6 text-center text-slate-400">Belum ada peserta terdaftar.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = list.map((item, index) => {
+        const isVerified = item.status === 'Terverifikasi';
+        return `
+          <tr class="hover:bg-slate-50 transition">
+            <td class="p-3 font-medium text-slate-600">${item.date || '-'}</td>
+            <td class="p-3 font-bold text-smansa-green">${item.id}</td>
+            <td class="p-3 font-bold text-slate-800">${item.name}</td>
+            <td class="p-3 text-slate-600">${item.phone}</td>
+            <td class="p-3 font-bold">${item.jersey}</td>
+            <td class="p-3">
+              <span class="px-2.5 py-1 rounded-full text-[10px] font-bold ${isVerified ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}">
+                ${item.status}
+              </span>
+            </td>
+            <td class="p-3 text-center space-x-1">
+              <button onclick="toggleVerify('${item.id}')" title="Ubah Status Verifikasi" class="px-2.5 py-1 rounded-lg text-[11px] font-bold ${isVerified ? 'bg-amber-100 text-amber-800 hover:bg-amber-200' : 'bg-emerald-600 text-white hover:bg-emerald-700'} transition">
+                ${isVerified ? 'Batalkan' : 'Verifikasi'}
+              </button>
+              <button onclick="deleteParticipant('${item.id}')" title="Hapus Pendaftar" class="p-1.5 rounded-lg bg-red-100 text-red-600 hover:bg-red-200 transition">
+                🗑️
+              </button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function toggleVerify(id) {
+      const list = getLocalData();
+      const item = list.find(x => x.id === id);
+      if (item) {
+        const newStatus = item.status === 'Terverifikasi' ? 'Menunggu Verifikasi' : 'Terverifikasi';
+        item.status = newStatus;
+        saveLocalData(list);
+
+        // Sync to cloud database & Google Sheets
+        if (typeof window.dbUpdateParticipant === 'function') {
+          window.dbUpdateParticipant(id, { status: newStatus });
+        }
+        syncToGoogleSheets({ action: 'UPDATE_STATUS', id: id, status: newStatus });
+      }
+    }
+
+    function deleteParticipant(id) {
+      if (confirm(`Apakah Anda yakin ingin menghapus data pendaftar ${id}?`)) {
+        let list = getLocalData();
+        list = list.filter(x => x.id !== id);
+        saveLocalData(list);
+
+        // Sync to cloud database & Google Sheets
+        if (typeof window.dbDeleteParticipant === 'function') {
+          window.dbDeleteParticipant(id);
+        }
+        syncToGoogleSheets({ action: 'DELETE', id: id });
+      }
+    }
+    function handleAdminLogin(e) {
+      e.preventDefault();
+      const u = document.getElementById('adminUser').value;
+      const p = document.getElementById('adminPass').value;
+
+      if (u === 'jokowee' && p === 'ndasana22') {
+        closeModal('modalAdminLogin');
+        openModal('modalAdminDashboard');
+        
+        // Load saved Sheets URL to input field
+        const inputUrl = document.getElementById('sheetsUrlInput');
+        if (inputUrl) inputUrl.value = getSheetsUrl();
+
+        renderAdminTable();
+        document.getElementById('adminUser').value = '';
+        document.getElementById('adminPass').value = '';
+      } else {
+        alert('Username atau Password Panitia Salah!');
+      }
+    }
+
+    function toggleRegistrationClosed() {
+      const cfg = getConfig();
+      cfg.isClosed = !cfg.isClosed;
+      saveConfig(cfg);
+
+      // Sync config across devices
+      if (typeof window.dbSaveConfig === 'function') {
+        window.dbSaveConfig(cfg);
+      }
+    }
+
+    function applyConfigUI() {
+      const cfg = getConfig();
+      const closedBanner = document.getElementById('closedBanner');
+      const submitBtn = document.getElementById('btnSubmitForm');
+      const toggleBtnLabel = document.getElementById('closedToggleLabel');
+
+      if (closedBanner) {
+        if (cfg.isClosed) {
+          closedBanner.classList.remove('hidden');
+        } else {
+          closedBanner.classList.add('hidden');
+        }
+      }
+
+      if (submitBtn) {
+        if (cfg.isClosed) {
+          submitBtn.disabled = true;
+          submitBtn.classList.replace('bg-smansa-orange', 'bg-slate-400');
+        } else {
+          submitBtn.disabled = false;
+          submitBtn.classList.replace('bg-slate-400', 'bg-smansa-orange');
+        }
+      }
+
+      if (toggleBtnLabel) {
+        toggleBtnLabel.textContent = cfg.isClosed ? 'Buka Pendaftaran' : 'Tutup Pendaftaran';
+      }
+    }
+
+    /* ---------- EXPORT VERIFIED PARTICIPANTS TO DOCS FILE ---------- */
+    function exportToDocs() {
+      const list = getLocalData();
+      const verified = list.filter(x => x.status === 'Terverifikasi');
+
+      if (verified.length === 0) {
+        alert('Tidak ada peserta dengan status Terverifikasi untuk diekspor.');
+        return;
+      }
+
+      let tableHtml = `
+        <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+        <head>
+          <title>Data Peserta Terverifikasi FUN RUN SMANSA 2026</title>
+          <style>
+            body { font-family: Arial, sans-serif; }
+            h2 { text-align: center; color: #01796F; }
+            p { text-align: center; font-size: 12px; }
+            table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+            th, td { border: 1px solid #333; padding: 8px; text-align: left; font-size: 12px; }
+            th { background-color: #01796F; color: white; }
+            .sig-box { height: 35px; width: 120px; }
+          </style>
+        </head>
+        <body>
+          <h2>DAFTAR PESERTA TERVERIFIKASI & PENGAMBILAN ATRIBUT</h2>
+          <p>FUN RUN SMANSA MEPANGA 7K 2026 | Tanggal Cetak: ${new Date().toLocaleDateString('id-ID')}</p>
+          <table>
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Tanggal Pendaftaran</th>
+                <th>No Registrasi</th>
+                <th>Nama Peserta</th>
+                <th>Ukuran Jersey</th>
+                <th>Kolom Tanda Tangan</th>
+              </tr>
+            </thead>
+            <tbody>
+      `;
+
+      verified.forEach((item, index) => {
+        tableHtml += `
+          <tr>
+            <td>${index + 1}</td>
+            <td>${item.date || '-'}</td>
+            <td><strong>${item.id}</strong></td>
+            <td>${item.name}</td>
+            <td>${item.jersey}</td>
+            <td class="sig-box"></td>
+          </tr>
+        `;
+      });
+
+      tableHtml += `
+            </tbody>
+          </table>
+        </body>
+        </html>
+      `;
+
+      const blob = new Blob(['\ufeff', tableHtml], {
+        type: 'application/msword'
+      });
+
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `DATA_PESERTA_TERVERIFIKASI_SMANSA_2026.doc`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+
+    /* ---------- MODAL UTILS ---------- */
+    function openModal(id) {
+      const m = document.getElementById(id);
+      m.classList.remove('hidden');
+      m.classList.add('flex');
+    }
+
+    function closeModal(id) {
+      const m = document.getElementById(id);
+      m.classList.add('hidden');
+      m.classList.remove('flex');
+    }
+
+    // Init on load
+    window.onload = function() {
+      applyConfigUI();
+      syncFromGoogleSheets();
+    };
+  </script>
+</body>
+</html>
