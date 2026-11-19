@@ -1050,7 +1050,7 @@
         return window.remoteConfig;
       }
       const cfg = localStorage.getItem(CONFIG_KEY);
-      return cfg ? JSON.parse(cfg) : { isClosed: false };
+      return cfg ? JSON.parse(cfg) : { isClosed: true };
     }
 
     function saveConfig(cfg) {
